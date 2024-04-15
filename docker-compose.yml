@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  backend:
+    build: .
+    ports:
+      - '3006:3006'
+    networks:
+      - webnet
+  db:
+    image: mongo
+    restart: always
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./db/datadir:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: cuonghm
+      MONGO_INITDB_ROOT_PASSWORD: vanha110100
+networks:
+  webnet:
